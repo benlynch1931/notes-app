@@ -1,12 +1,12 @@
 ( () => {
 
   test.that('It is an instance of a class', () => {
-    let note = new Note("testNote");
-    expect.toBeAnInstanceOf(note, Note);
+    let note = new SingleNote("testNote");
+    expect.toBeAnInstanceOf(note, SingleNote);
   })
 
   test.that('The message is the same', () => {
-    let note = new Note("I am with Mace!");
+    let note = new SingleNote("I am with Mace!");
     expect.toEqual(note.showMessage(), "I am with Mace!");
   })
 

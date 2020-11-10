@@ -1,4 +1,4 @@
-class Note {
+class SingleNote {
   #message;
 
   constructor(message) {
