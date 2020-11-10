@@ -15,7 +15,7 @@
     let notes = new Notes();
     notes.addNote("New Note with Mace!");
     expect.toBeAnInstanceOf(notes.noteList[0], SingleNote);
-    expect.toEqual(notes.noteList[0].showMessage(), 'New Note with Mace!')
+    expect.toEqual(notes.noteList[0].showNote(), 'New Note with Mace!')
   })
 
 })(this);

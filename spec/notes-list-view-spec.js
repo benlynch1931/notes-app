@@ -15,7 +15,7 @@
     let viewNotes = new NoteListView();
     let notes = new Notes();
     notes.addNote("Mace's note!");
-    expect.toEqual(viewNotes.buildHTML(notes), "<ul><li><a class=`note1` href=''>Mace's note!</div></li></ul>");
+    expect.toEqual(viewNotes.buildHTML(notes), "<ul><li><a class='note1' href=''>Mace's note!</a></li></ul>");
   })
 
   test.that("buildHTML() returns multiple element <ul> to multi-element list", () => {
@@ -24,7 +24,7 @@
     notes.addNote("Mace's note!");
     notes.addNote("Ben's note!");
     notes.addNote("Mr. Gill's note!");
-    expect.toEqual(viewNotes.buildHTML(notes), "<ul><li><a class=`note1` href=''>Mace's note!</a></li><li><a class=`note2` href=''>Ben's note!</a></li><li><a class=`note3` href=''>Mr. Gill's note!</a></li></ul>");
+    expect.toEqual(viewNotes.buildHTML(notes), "<ul><li><a class='note1' href=''>Mace's note!</a></li><li><a class='note2' href=''>Ben's note!</a></li><li><a class='note3' href=''>Mr. Gill's note!</a></li></ul>");
   })
 
 })(this);

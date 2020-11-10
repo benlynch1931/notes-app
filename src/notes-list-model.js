@@ -1,7 +1,7 @@
 class Notes {
 
   constructor() {
-    this.noteList = []
+    this.noteList = [];
   }
 
   getNotes() {

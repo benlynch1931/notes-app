@@ -5,7 +5,7 @@ class SingleNote {
     this.#message = message
   }
 
-  showMessage() {
+  showNote() {
     return this.#message;
   }
 }
