@@ -1,18 +1,35 @@
-// Line2 initializes ability to test.
-var test = new Asparagus();
-var message = "A great new note! The best note ever!"
-var note = new Note(message);
+// (function(exports) {
+//   function testCircleRadiusDefaultsTo10() {
+//     var circle = new Circle();
+//
+//     if (circle.radius !== 10) {
+//       throw new Error("Circle size is not 10");
+//     }
+//   };
+//
+//   testCircleRadiusDefaultsTo10();
+// })(this);
 
-// No {} for function otherwise no return ability
-// Testing that our tests work.
-test.it('is an Asparagus', () =>
-  test.expect(test).toBeAn(Asparagus)
-);
+// (function(exports) {
+//
+//   function testShowMessage() {
+//     var note = new Note("Mace is the 'G'!");
+//
+//     if (note.showMessage() != "Mace is the 'G'!") {
+//       throw new Error("test showMessage() - FAILED")
+//     } else {
+//       console.log("test showMessage() - passed")
+//     }
+//   }
+//
+//   testShowMessage();
+// })(this);
 
-test.it('is an instance of Note', () =>
-  test.expect(note).toBeA(Note)
-);
 
-test.it('can return the message stored', () => 
-  test.expect(note.showMessage()).toEqual(message)
-);
+
+( () => {
+  test.that('The message is the same', () => {
+    let note = new Note("I am with mace!");
+    expect.toEqual(note.showMessage(), "I am with Mace!");
+  })
+})(this);
