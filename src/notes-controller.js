@@ -1,4 +1,8 @@
-// let appDiv = document.getElementById('app')
+let noteListView = new NoteListView();
+let notes = new Notes();
+notes.addNote("'Ruby sucks' - Mace");
+noteListHTML = noteListView.buildHTML(notes);
 
-document.getElementById('app').innerHTML = 'howdy';
-// console.log(appDiv)
+let appDiv = document.getElementById('app')
+
+appDiv.innerHTML = noteListHTML;
