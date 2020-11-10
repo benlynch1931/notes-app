@@ -8,7 +8,7 @@ class Notes {
     // logs array
   }
 
-  addNotes() {
-    // pushes to array
+  addNote(message) {
+    this.noteList.push(new SingleNote(message))
   }
 }
