@@ -2,8 +2,13 @@
 
 
   test.that('It is an instance of a Notes class', () => {
-    let notes = new Notes("testNote");
+    let notes = new Notes;
     expect.toBeAnInstanceOf(notes, Notes);
+  })
+
+  test.that('It instantiates with an empty array', () => {
+    let notes = new Notes();
+    expect.toEqualEmpty(notes.noteList, Array)
   })
 
   test.that('It adds a note to the array', () => {

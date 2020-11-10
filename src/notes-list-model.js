@@ -5,7 +5,7 @@ class Notes {
   }
 
   getNotes() {
-    // logs array
+    return this.noteList;
   }
 
   addNote(message) {
