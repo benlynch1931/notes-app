@@ -5,6 +5,6 @@ class SingleNoteView {
   }
 
   buildHTML() {
-    return `<p>${this.note}</p>`;
+    return `<p>${this.note.showNote()}</p>`;
   }
 }

@@ -3,18 +3,19 @@ body {
   padding-top: 2px;
 }
 
-.preview {
+#preview {
 
   width: 400px;
   height: 200px;
   margin-bottom: 30px;
+  padding-left: 10px;
 
   border: solid #000000;
 
   overflow-y: scroll;
 }
 
-.preview::-webkit-scrollbar {
+#preview::-webkit-scrollbar {
   display: none;
 }
 

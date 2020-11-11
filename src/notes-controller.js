@@ -10,7 +10,8 @@ appDiv.innerHTML = noteListHTML;
 
 
 function viewNote(noteID) {
-  let noteView = SingleNoteView(notes.noteList[noteID-1]);
+  console.log("I FOUND THE FUNCTION!")
+  let noteView = new SingleNoteView(notes.noteList[noteID-1]);
   let previewDiv = document.getElementById('preview');
-  preiewDiv.innerHTML = noteView.buildHTML();
+  previewDiv.innerHTML = noteView.buildHTML();
 }
