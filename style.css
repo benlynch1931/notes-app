@@ -12,10 +12,13 @@ body {
 
   border: solid #000000;
 
+}
+
+p {
   overflow-y: scroll;
 }
 
-#preview::-webkit-scrollbar {
+p::-webkit-scrollbar {
   display: none;
 }
 
@@ -24,15 +27,63 @@ body {
   margin-left: 20px;
 }
 
-input {
+#createNote li {
+
+  margin-top: -20px;
+  margin-left: -40px;
+  padding: 0;
+
+}
+
+#createNoteText::-webkit-scrollbar {
+  display: none;
+}
+
+#createNoteText {
+
+  width: 400px;
+  height: 195px;
+  padding-top: 2px;
+  padding-left: 5px;
+
+  overflow-y: scroll;
+
+  border: none;
+
+}
+
+
+#createFormDiv {
+  height: 25px;
+
+}
+
+#createFormSubmit {
 
   width: 100px;
   height: 25px;
-  margin-left: 285px;
+  margin-left: 283px;
 
   border-radius: 0px;
   border: none;
   box-shadow: 0 0 1.5px 3px #00000f;
+}
+
+#createNoteSubmit {
+
+  width: 100px;
+  height: 25px;
+  margin-top: 49px;
+  margin-left: 280px;
+
+  border-radius: 0px;
+  border: none;
+  box-shadow: 0 0 1.5px 3px #00000f;
+}
+
+#createNote {
+
+  margin-left: -10px;
 }
 
 a {
@@ -42,6 +93,7 @@ a {
 ul {
   font-size: 20px;
   list-style-type: none;
+  list-style-position: outside;
 }
 
 li {
