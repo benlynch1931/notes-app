@@ -7,7 +7,7 @@
 
   test.that("buildHTML() returns empty <ul> to an empty list", () => {
     let notes = new NoteList();
-    expect.toEqual(NoteListView.buildHTML(notes), '<ul></ul>');
+    expect.toEqual(NoteListView.buildHTML(notes), '<h3>NO NOTES AVAILABLE</h3>');
   })
 
   test.that("buildHTML() returns 1 element <ul> to 1 element list", () => {

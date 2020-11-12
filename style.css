@@ -1,6 +1,8 @@
 body {
   padding-left: 20px;
   padding-top: 2px;
+
+  font-family: arial;
 }
 
 #preview {
@@ -9,12 +11,18 @@ body {
   height: 200px;
   margin-bottom: 30px;
   padding-left: 10px;
+  padding-right: 10px;
 
   border: solid #000000;
+
+  word-break:break-word;
+
+  font-size: 20px;
 
 }
 
 p {
+  margin-top: 5px;
   overflow-y: scroll;
 }
 
@@ -22,7 +30,7 @@ p::-webkit-scrollbar {
   display: none;
 }
 
-#app {
+#notes {
   margin-top: 20px;
   margin-left: 20px;
 }
@@ -48,7 +56,12 @@ p::-webkit-scrollbar {
 
   overflow-y: scroll;
 
+  font-size: 20px;
+  font-family: arial;
+  color: #000000;
+
   border: none;
+  border-color: #ffffff;
 
 }
 
@@ -61,11 +74,6 @@ p::-webkit-scrollbar {
   /* border: solid #ff0000; */
 }
 
-
-#expandNoteSubmit {
-
-  margin-left: 173px;
-}
 
 #createFormSubmit, #expandNoteSubmit, #returnHomeSubmit {
 
