@@ -1,88 +1,77 @@
-let originalCreateFormDiv = document.getElementById('createFormDiv').innerHTML;
-let noteListView = new NoteListView();
-let notes = new Notes();
-let appDiv = document.getElementById('app');
+let noteList = new NoteList();
+const notesDiv = document.getElementById('notes');
+const ADDNOTE = "<form id='createNote' action='#homepage'><ul><li><textarea id='createNoteText' name='note' placeholder='Enter new note: '></textarea></li><li><input id='createNoteSubmit' type='submit' value='Add Note'></li></ul></form>"
+const RETURNHOME = "<form id='returnHome' action='/'><input id='returnHomeSubmit' type='submit' value='Home'></form>";
+const CREATEFORM = "<form id='createForm' action='#notes/create'><input id='createFormSubmit' type=\"submit\" value=\"Create\"></form>"
 
 function updateNotesList() {
-  appDiv.innerHTML = noteListView.buildHTML(notes);
+  previousHash = window.location.hash
+  notesDiv.innerHTML = NoteListView.buildHTML(noteList);
 }
 
-(function startingWebpage() {
-  notes.addNote("'Ruby sucks' - Mace");
-  notes.addNote("'Ruby is cool' - Ben");
-  window.location.hash = 'homepage';
-  updateNotesList()
+function toWhere() {
+  if(window.location.hash === '#notes/create') {
+    createNote()
+  } else if(window.location.hash.slice(0, 7) === '#notes/') {
+    displaySingleNote()
+  } else {
+    resetWebpage()
+    startingWebpage()
+  }
+}
+
+function createNote() {
+  document.getElementById('createFormDiv').innerHTML = "";
+  document.getElementById('preview').innerHTML = ADDNOTE;
+  createEventListener();
+}
+
+function displaySingleNote() {
+  noteID = getNoteIDFromURL()
+  let noteView = new SingleNoteView(noteList.getNoteByID(noteID));
+  document.getElementById('preview').innerHTML = noteView.buildHTML();
+  document.getElementById('createFormDiv').innerHTML = RETURNHOME;
+}
+
+function createEventListener() {
+  document.getElementById('createNoteSubmit').addEventListener('click', function(event) {
+    event.preventDefault();
+    noteList.addNote(document.getElementById('createNoteText').value);
+    window.location.hash = '';
+  }, false);
+}
+
+function getNoteIDFromURL() {
+  return window.location.hash.split('/')[1]
+}
+
+(function(exports) {
+  function addNotes() {
+    noteList.addNote("'Ruby sucks' - Mace");
+    noteList.addNote("'Ruby is cool' - Ben");
+  }
+
+  function startingWebpage() {
+    document.getElementById('createFormDiv').innerHTML = CREATEFORM;
+    updateNotesList()
+  };
+
+  function resetWebpage() {
+    document.getElementById('preview').innerHTML = '';
+  }
+
+  addNotes();
+  startingWebpage();
+
+  exports.startingWebpage = startingWebpage;
+  exports.addNotes = addNotes;
+  exports.resetWebpage = resetWebpage;
 })(this);
 
 
-window.addEventListener('hashchange', toWhere);
+window.addEventListener('hashchange', toWhere, false);
 
-function toWhere() {
-  if(location.hash === '#homepage') {
-    homePage()
-  } else {
-    viewNote()
-  }
-}
-
-function homePage(newNote = null) {
-  if(newNote !== null) {
-    notes.addNote(document.getElementById('createNoteText').value);
-  }
-  document.getElementById('createFormDiv').innerHTML = originalCreateFormDiv;
-  document.getElementById('preview').innerHTML = "";
-  updateNotesList()
-}
-
-function viewNote() {
-  noteID = getNoteID();
-  let noteView = new SingleNoteView(notes.noteList[noteID-1]);
-  document.getElementById('preview').innerHTML = noteView.buildHTML();
-  document.getElementById('createFormDiv').innerHTML = "<form id='returnHome' action='#homepage'><input id='returnHomeSubmit' type='submit' value='Home'></form>"
-  // eventSetup('returnHome');
-}
-
-function getNoteID() {
-  return location.hash.split('')[location.hash.length - 1];
-}
-
-
-
-document.getElementById('createForm').addEventListener('submit', function createNoteForm(e) {
-  e.preventDefault();
-  document.getElementById('createFormDiv').innerHTML = "";
-  document.getElementById('preview').innerHTML = "<form id='createNote'><ul><li><textarea id='createNoteText' name='note' placeholder='Enter new note: '></textarea></li><li><input id='createNoteSubmit' type='submit' value='Add Note'></form>";
-  eventSetup('createNote', 1)
-})
-
-// function eventSetup(elementID, newNote = null) {
-//   document.getElementById(elementID).addEventListener('submit', function(e) {
-//     e.preventDefault();
-//     if(newNote !== null) {
-//       notes.addNote(document.getElementById('createNoteText').value);
-//     }
-//     document.getElementById('createFormDiv').innerHTML = originalCreateFormDiv;
-//     document.getElementById('preview').innerHTML = "";
-//     updateNotesList()
-//   })
-// }
-//
-//
-// function eventSetupToCreateNote() {
-//   document.getElementById('createNote').addEventListener('submit', function createNote(e) {
-//     e.preventDefault();
-//     notes.addNote(document.getElementById('createNoteText').value);
-//     document.getElementById('createFormDiv').innerHTML = originalCreateFormDiv;
-//     document.getElementById('preview').innerHTML = "";
-//     updateNotesList()
-//   })
-// }
-//
-// function eventSetupToReturnHome() {
-//   document.getElementById('returnHome').addEventListener('submit', function returnHome(e) {
-//     e.preventDefault();
-//     document.getElementById('createFormDiv').innerHTML = originalCreateFormDiv;
-//     document.getElementById('preview').innerHTML = "";
-//     updateNotesList()
-//   })
-// }
+document.getElementById('createFormSubmit').addEventListener('click', function(event) {
+  event.preventDefault();
+  window.location.hash = '#notes/create'
+}, false);

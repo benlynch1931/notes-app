@@ -1,30 +1,27 @@
 ( () => {
 
-  test.that('It is an instance of a NoteListView', () => {
-    let viewNotes = new NoteListView();
-    expect.toBeAnInstanceOf(viewNotes, NoteListView);
-  })
+  // test.that('It is an instance of a NoteListView', () => {
+  //   let viewNoteList = new NoteListView();
+  //   expect.toBeAnInstanceOf(viewNoteList, NoteListView);
+  // })
 
   test.that("buildHTML() returns empty <ul> to an empty list", () => {
-    let viewNotes = new NoteListView();
-    let notes = new Notes();
-    expect.toEqual(viewNotes.buildHTML(notes), '<ul></ul>');
+    let notes = new NoteList();
+    expect.toEqual(NoteListView.buildHTML(notes), '<ul></ul>');
   })
 
   test.that("buildHTML() returns 1 element <ul> to 1 element list", () => {
-    let viewNotes = new NoteListView();
-    let notes = new Notes();
+    let notes = new NoteList();
     notes.addNote("Mace's note!");
-    expect.toEqual(viewNotes.buildHTML(notes), "<ul><li><a class='note1' href=''>Mace's note!</a></li></ul>");
+    expect.toEqual(NoteListView.buildHTML(notes), "<ul><li><a id='note1' href='#notes/1'>Mace's note!</a></li></ul>");
   })
 
   test.that("buildHTML() returns multiple element <ul> to multi-element list", () => {
-    let viewNotes = new NoteListView();
-    let notes = new Notes();
+    let notes = new NoteList();
     notes.addNote("Mace's note!");
     notes.addNote("Ben's note!");
     notes.addNote("Mr. Gill's note!");
-    expect.toEqual(viewNotes.buildHTML(notes), "<ul><li><a class='note1' href=''>Mace's note!</a></li><li><a class='note2' href=''>Ben's note!</a></li><li><a class='note3' href=''>Mr. Gill's note!</a></li></ul>");
+    expect.toEqual(NoteListView.buildHTML(notes), "<ul><li><a id='note1' href='#notes/1'>Mace's note!</a></li><li><a id='note2' href='#notes/2'>Ben's note!</a></li><li><a id='note3' href='#notes/3'>Mr. Gill's note!</a></li></ul>");
   })
 
 })(this);

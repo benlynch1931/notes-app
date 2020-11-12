@@ -54,27 +54,13 @@ p::-webkit-scrollbar {
 
 
 #createFormDiv {
+
   height: 25px;
   width: 300px;
+  margin-left: 283px;
   /* border: solid #ff0000; */
-
-  display: inline-flex;
-  flex-grow: 1;
-  align-items: flex-end;
 }
 
-#expandNoteDiv {
-
-  height: 25px;
-  margin: 0;
-  width: 283px;
-
-  /* border: solid #00ff00; */
-
-  display: inline-flex;
-  flex-grow: 1;
-  align-items: flex-end;
-}
 
 #expandNoteSubmit {
 

@@ -8,7 +8,8 @@
 
   test.that('it returns a <p> with the note', () => {
 
-    singleView = new SingleNoteView("testNote");
+    let note = new SingleNote("testNote")
+    let singleView = new SingleNoteView(note);
     expect.toEqual(singleView.buildHTML(), '<p>testNote</p>')
   })
 })(this);

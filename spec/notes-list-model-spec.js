@@ -1,21 +1,21 @@
 ( () => {
 
 
-  test.that('It is an instance of a Notes class', () => {
-    let notes = new Notes;
-    expect.toBeAnInstanceOf(notes, Notes);
+  test.that('It is an instance of a NoteList class', () => {
+    let notes = new NoteList;
+    expect.toBeAnInstanceOf(notes, NoteList);
   })
 
   test.that('It instantiates with an empty array', () => {
-    let notes = new Notes();
-    expect.toEqualEmpty(notes.noteList, Array)
+    let notes = new NoteList();
+    expect.toEqualEmpty(notes.listed, Array)
   })
 
   test.that('It adds a note to the array', () => {
-    let notes = new Notes();
+    let notes = new NoteList();
     notes.addNote("New Note with Mace!");
-    expect.toBeAnInstanceOf(notes.noteList[0], SingleNote);
-    expect.toEqual(notes.noteList[0].showNote(), 'New Note with Mace!')
+    expect.toBeAnInstanceOf(notes.getNoteByID(1), SingleNote);
+    expect.toEqual(notes.getNoteByID(1).text, 'New Note with Mace!')
   })
 
 })(this);
